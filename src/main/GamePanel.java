@@ -36,7 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     Joueur joueur = new Joueur(this,keyH);
 
 
-    //Position par défaut du Joueur
+    //Position par défaut du Joueur (tests)
     int playerX = 100;
     int playerY = 100;
     int playerSpeed = 4;
@@ -44,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable{
     public GamePanel() {
 
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.black);
+        this.setBackground(Color.darkGray);
         this.setDoubleBuffered(true);               //Améliore le rendu du jeu
         this.addKeyListener(keyH);
         this.setFocusable(true);    //Game Panel peut presentement être focus pour recevoir le keyInput
