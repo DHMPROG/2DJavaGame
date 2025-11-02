@@ -2,12 +2,16 @@ package main;
 
 import javax.swing.*;
 import java.awt.*;
-
+import Entités.Joueur;
 public class GamePanel extends JPanel implements Runnable{
 
     //Paramètres Écran
     final int originalTileSize = 16; //16x16 tile
     final int echelle = 3;
+
+    public int getTileSize() {
+        return tileSize;
+    }
 
     final int tileSize = originalTileSize * echelle; //  48x48 tile
 
@@ -27,6 +31,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     //KeyHandler
     KeyHandler keyH = new KeyHandler();
+
+    //Joueur
+    Joueur joueur = new Joueur(this,keyH);
 
 
     //Position par défaut du Joueur
@@ -55,7 +62,7 @@ public class GamePanel extends JPanel implements Runnable{
     @Override
     public void run() {
 
-        double IntervalleDessin = 1000000000/FPS; //0.01666 secondes
+        double IntervalleDessin = (double) 1000000000 /FPS; //0.01666 secondes
         double nextDrawTime = System.nanoTime() + IntervalleDessin;
 
         while(gameThread != null){
@@ -90,18 +97,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     //Fonction des update
     public void update() {
-            if(keyH.upPressed == true){
-                 playerY -= playerSpeed;
-            }
-            if (keyH.downPressed == true){
-                playerY += playerSpeed;
-            }
-            if (keyH.leftPressed == true){
-                playerX -= playerSpeed;
-            }
-            if (keyH.rightPressed == true){
-                playerX += playerSpeed;
-            }
+            joueur.update();
 
     }
 
@@ -111,8 +107,8 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.setColor(Color.white);
-        g2d.fillRect(playerX, playerY, tileSize, tileSize);
+        joueur.draw(g2d);
+
         g2d.dispose();
 
     }
