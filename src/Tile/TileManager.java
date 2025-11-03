@@ -4,19 +4,20 @@ import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class TileManager {
 
     GamePanel gp;
     Tile[] tiles;
+    int mapTuileNum[][];
 
     public TileManager(GamePanel gp){
         this.gp = gp;
         tiles = new Tile[94];
+        mapTuileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         getTileImage();
+        loadMap();
     }
     public void getTileImage(){
 
@@ -45,6 +46,38 @@ public class TileManager {
             e.printStackTrace();
         }
     }
+    public void loadMap(){
+        try {
+            InputStream is = getClass().getResourceAsStream("/Map/map01.txt");
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            int col=0,row=0;
+
+            while (col <gp.maxScreenCol && row <gp.maxScreenRow){
+
+                String line = br.readLine();
+
+                while (col < gp.maxScreenCol) {
+
+                    String numbers[] = line.split(" ");
+
+                    int num = Integer.parseInt(numbers[col]);
+
+                    mapTuileNum[col][row] = num;
+                    col++;
+                }
+                if(col == gp.maxScreenCol){
+                    col = 0;
+                    row++;
+
+                }
+            }
+            br.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void draw(Graphics2D g2d){
 
      //Test Tuiles
@@ -58,8 +91,9 @@ public class TileManager {
         int x=0,y=0;
 
         while (col <gp.maxScreenCol && row <gp.maxScreenRow) {
+            int tilenum =  mapTuileNum[col][row];
 
-            g2d.drawImage(tiles[0].image,x,y,gp.getTileSize(),gp.getTileSize(),null);
+            g2d.drawImage(tiles[tilenum].image,x,y,gp.getTileSize(),gp.getTileSize(),null);
             col++;
             x+= gp.getTileSize();
 
