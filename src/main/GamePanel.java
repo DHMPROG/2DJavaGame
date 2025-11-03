@@ -3,6 +3,9 @@ package main;
 import javax.swing.*;
 import java.awt.*;
 import Entités.Joueur;
+import Tile.Tile;
+import Tile.TileManager;
+
 public class GamePanel extends JPanel implements Runnable{
 
     //Paramètres Écran
@@ -16,8 +19,8 @@ public class GamePanel extends JPanel implements Runnable{
     final int tileSize = originalTileSize * echelle; //  48x48 tile
 
     //Ratio 4x3
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
+    public final int maxScreenCol = 16;
+    public final int maxScreenRow = 12;
 
     //Taille Écran
     final int screenWidth = tileSize * maxScreenCol;  // 768 pixels
@@ -34,6 +37,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     //Joueur
     Joueur joueur = new Joueur(this,keyH);
+
+    //Tuiles
+    TileManager tuileM = new TileManager(this);
 
 
     //Position par défaut du Joueur (tests)
@@ -107,10 +113,10 @@ public class GamePanel extends JPanel implements Runnable{
 
         Graphics2D g2d = (Graphics2D) g;
 
+        tuileM.draw(g2d);
         joueur.draw(g2d);
 
         g2d.dispose();
-
     }
 
 
