@@ -1,4 +1,4 @@
-
+package main;
 
 import main.GamePanel;
 
@@ -6,7 +6,9 @@ import javax.swing.JFrame;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
+public class main {
+
+    public static void main(String[] args) {
 
     JFrame frame = new JFrame();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,5 +25,7 @@ void main() {
 
     gamePanel.startGameThread();
 
-  }
+}}
+
+
 
