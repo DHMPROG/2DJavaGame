@@ -6,22 +6,22 @@ import javax.swing.JFrame;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
+public class Main {
 
-    JFrame frame = new JFrame();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setResizable(false);
-    frame.setTitle("Serach of the UCL : Barcelona Edition");
+    public static void main(String[] args) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setTitle("Search of the UCL : Barcelona Edition");
 
-    GamePanel gamePanel = new GamePanel();
-    frame.add(gamePanel);
+        GamePanel gamePanel = new GamePanel();
+        frame.add(gamePanel);
 
-    frame.pack();
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
 
-    frame.setLocationRelativeTo(null);
-    frame.setVisible(true);
-
-    gamePanel.startGameThread();
-
-  }
+        gamePanel.startGameThread();
+    }
+}
 
