@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="2DJavaGame" type="Application" factoryName="Application">
-    <option name="MAIN_CLASS_NAME" value="Main" />
+    <option name="MAIN_CLASS_NAME" value="main.Main" />
     <module name="2DJavaGame" />
     <option name="VM_PARAMETERS" value="--enable-native-access=ALL-UNNAMED" />
     <method v="2">

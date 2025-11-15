@@ -1,5 +1,6 @@
 package Entités;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Entite {
@@ -12,6 +13,11 @@ public class Entite {
 
     public int compteurSprite =0;
     public int nombreSprite = 1;
+
+    public Rectangle aireCollision;
+    public boolean CollisionObj = false;
+
+
 
 
 }

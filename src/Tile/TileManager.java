@@ -6,8 +6,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.*;
 
-import Entités.Joueur;
-
 public class TileManager {
 
     GamePanel gp;
@@ -42,6 +40,9 @@ public class TileManager {
                 }
                 tiles[j-1].image = ImageIO.read(is);
             }
+
+            tiles[46].collision = true;
+
 
         }
         catch (Exception e) {
@@ -96,14 +97,18 @@ public class TileManager {
 
             int x = WorldCol * gp.getTileSize();
             int y = WorldRow * gp.getTileSize();
-            int screenX = x - gp.getJoueur().WorldX + gp.getJoueur().screenX;
-            int screenY = y - gp.getJoueur().WorldY + gp.getJoueur().screenY;
+            int cameraX = gp.getJoueur().getCameraX();
+            int cameraY = gp.getJoueur().getCameraY();
 
-            if(x + gp.getTileSize() > gp.getJoueur().WorldX - gp.getJoueur().screenX &&
-               x - gp.getTileSize() < gp.getJoueur().WorldX + gp.getJoueur().screenX &&
-               y + gp.getTileSize() > gp.getJoueur().WorldY - gp.getJoueur().screenY &&
-               y - gp.getTileSize() < gp.getJoueur().WorldY + gp.getJoueur().screenY)
-            g2d.drawImage(tiles[tilenum].image,screenX,screenY,gp.getTileSize(),gp.getTileSize(),null);
+            int screenX = x - cameraX;
+            int screenY = y - cameraY;
+
+            if(x + gp.getTileSize() > cameraX &&
+               x - gp.getTileSize() < cameraX +  gp.screenWidth&&
+               y + gp.getTileSize() > cameraY &&
+               y - gp.getTileSize() < cameraY + gp.screenHeight)
+                g2d.drawImage(tiles[tilenum].image, screenX, screenY,
+                        gp.getTileSize(), gp.getTileSize(), null);
             WorldCol++;
 
             if (WorldCol == gp.maxWorldCol) {
@@ -115,5 +120,14 @@ public class TileManager {
 
         }
 
+    }
+
+    //Getters
+    public int[][] getMapTuileNum() {
+        return mapTuileNum;
+    }
+
+    public Tile[] getTiles() {
+        return tiles;
     }
 }

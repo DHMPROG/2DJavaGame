@@ -45,6 +45,9 @@ public class GamePanel extends JPanel implements Runnable{
     //Joueur
     Joueur joueur = new Joueur(this,keyH);
 
+    //Collisions
+    CollisionChecker cChecker = new CollisionChecker(this);
+
     public Joueur getJoueur() {
         return joueur;
     }
@@ -131,4 +134,8 @@ public class GamePanel extends JPanel implements Runnable{
     }
 
 
+    //Getters
+    public CollisionChecker getcChecker() {
+        return cChecker;
+    }
 }
