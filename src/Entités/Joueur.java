@@ -6,23 +6,31 @@ import main.KeyHandler;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class Joueur extends Entite {
     GamePanel gp;
     KeyHandler kh;
 
+
+    public final int screenX;
+    public final int screenY;
+
+
+
     public Joueur(GamePanel gp, KeyHandler kh) {
         this.gp = gp;
         this.kh = kh;
+
+        screenX = gp.screenWidth/2 - (gp.getTileSize()/2);
+        screenY = gp.screenHeight/2- (gp.getTileSize()/2);
 
         setDefaultValues();
         getImageJoueur();
     }
     public void setDefaultValues(){
-        x = 100;
-        y = 100;
+        WorldX = gp.getTileSize()*23;
+        WorldY = gp.getTileSize()*21;
         vitesse = 4;
         direction = "bas";
     }
@@ -46,19 +54,19 @@ public class Joueur extends Entite {
        if(kh.upPressed || kh.downPressed || kh.leftPressed || kh.rightPressed){
            if(kh.upPressed){
                direction = "haut";
-               y -= vitesse;
+               WorldY -= vitesse;
            }
            if (kh.downPressed){
                direction = "bas";
-               y += vitesse;
+               WorldY += vitesse;
            }
            if (kh.leftPressed){
                direction = "gauche";
-               x -= vitesse;
+               WorldX -= vitesse;
            }
            if (kh.rightPressed){
                direction = "droite";
-               x += vitesse;
+               WorldX += vitesse;
            }
            compteurSprite++;
            if (compteurSprite >12){
@@ -94,7 +102,7 @@ public class Joueur extends Entite {
                 if(nombreSprite == 2) image = droite2;
                 break;
         }
-        g2d.drawImage(image, x, y, gp.getTileSize(), gp.getTileSize(), null);
+        g2d.drawImage(image, screenX, screenY, gp.getTileSize(), gp.getTileSize(), null);
 
     }
 }
