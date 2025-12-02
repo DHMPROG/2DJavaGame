@@ -41,7 +41,7 @@
                 screenY = gp.screenHeight/2- (gp.getTileSize()/2);
 
                 // Zone de collision relative (x, y, largeur, hauteur)
-                aireCollision = new Rectangle(8,16,32,32);
+                aireCollision = new Rectangle(32,32,16,16);
 
                 setDefaultValues();
                 getImageJoueur();
@@ -100,22 +100,38 @@
                if(kh.upPressed || kh.downPressed || kh.leftPressed || kh.rightPressed){
                    if(kh.upPressed){
                        direction = "haut";
-                       WorldY -= vitesse;
                    }
                    if (kh.downPressed){
                        direction = "bas";
-                       WorldY += vitesse;
                    }
                    if (kh.leftPressed){
                        direction = "gauche";
-                       WorldX -= vitesse;
                    }
                    if (kh.rightPressed){
                        direction = "droite";
-                       WorldX += vitesse;
                    }
+
+                   //Regarder si il y'a collision
                    CollisionObj = false;
                    gp.getcChecker().checkTile(this);
+
+                   //Si collision est false joueur peut bouger
+                   if(CollisionObj == false){
+                       switch (direction){
+                           case "haut":
+                               WorldY -= vitesse;
+                               break;
+                           case "bas":
+                               WorldY += vitesse;
+                               break;
+                           case "gauche":
+                               WorldX -= vitesse;
+                               break;
+                           case "droite":
+                               WorldX += vitesse;
+                               break;
+                       }
+                   }
 
 
 

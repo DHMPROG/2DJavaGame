@@ -31,10 +31,28 @@ public class CollisionChecker {
                 }
                 break;
             case "bas":
+                entiteBottomRow = (entiteBottomWorldY + entite.vitesse)/gp.getTileSize();
+                tileNum1 = gp.tuileM.getMapTuileNum()[entiteLeftCol][entiteBottomRow];
+                tileNum2 = gp.tuileM.getMapTuileNum()[entiteRightCol][entiteBottomRow];
+                if(gp.tuileM.getTiles()[tileNum1].collision == true || gp.tuileM.getTiles()[tileNum2].collision == true){
+                    entite.CollisionObj = true;
+                }
                 break;
             case "gauche":
+                entiteLeftCol = (entiteLeftWorldX - entite.vitesse)/gp.getTileSize();
+                tileNum1 = gp.tuileM.getMapTuileNum()[entiteLeftCol][entiteTopRow];
+                tileNum2 = gp.tuileM.getMapTuileNum()[entiteLeftCol][entiteBottomRow];
+                if(gp.tuileM.getTiles()[tileNum1].collision == true || gp.tuileM.getTiles()[tileNum2].collision == true) {
+                    entite.CollisionObj = true;
+                }
                 break;
             case "droite":
+                entiteRightCol = (entiteRightWorldX)/gp.getTileSize();
+                tileNum1 = gp.tuileM.getMapTuileNum()[entiteRightCol][entiteTopRow];
+                tileNum2 = gp.tuileM.getMapTuileNum()[entiteRightCol][entiteBottomRow];
+                if(gp.tuileM.getTiles()[tileNum1].collision == true || gp.tuileM.getTiles()[tileNum2].collision == true) {
+                    entite.CollisionObj = true;
+                }
                 break;
         }
     }

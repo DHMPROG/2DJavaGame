@@ -18,15 +18,19 @@ public class KeyHandler implements KeyListener {
 
         switch (code) {
             case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
                 upPressed = true;
                 break;
             case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
                 downPressed = true;
                 break;
             case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 leftPressed = true;
                 break;
             case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 rightPressed = true;
                 break;
         }

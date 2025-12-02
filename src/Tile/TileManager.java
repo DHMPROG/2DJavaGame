@@ -42,6 +42,10 @@ public class TileManager {
             }
 
             tiles[46].collision = true;
+            tiles[16].collision = true;
+            tiles[20].collision = true;
+            tiles[24].collision = true;
+            tiles[28].collision = true;
 
 
         }
