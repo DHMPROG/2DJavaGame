@@ -95,4 +95,7 @@ java -cp out;res main.Main
 - All resource loading in `Joueur` and tiles uses paths relative to the classpath (e.g. `/Joueur/bas 1.png`), so make sure the `res` folder is available on the runtime classpath.
 - The code and comments are partially written in French (e.g. *Joueur*, *Tuiles*), but the structure is straightforward and easy to extend.
 
+### Sources and Inspirations
+A big thanks to @Ryisnow for his series "Building a 2d game in Java" that helped me learn about tiles, sprites, and how to program game logic to this project. He's done a better job than most of my teachers at University
+
 
