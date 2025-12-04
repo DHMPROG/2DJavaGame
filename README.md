@@ -10,7 +10,7 @@ Some of the graphics used in the game:
 - **Player – facing down**
 
 ```startLine:endLine:res/Joueur/bas 1.png
-// Image preview in GitHub / IDE
+res/Joueur/haut 1.png
 ```
 
 - **Player – facing up**
