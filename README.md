@@ -9,29 +9,26 @@ Some of the graphics used in the game:
 
 - **Player – facing down**
 
-```startLine:endLine:res/Joueur/bas 1.png
-// Image preview in GitHub / IDE
-```
+<p align="left">
+  <img src="res/Joueur/bas 1.png" width="48">
+</p>
 
 - **Player – facing up**
-
-```startLine:endLine:res/Joueur/haut 1.png
-// Image preview in GitHub / IDE
-```
+<p align="left">
+  <img src="res/Joueur/haut 1.png" width="48">
+</p>
 
 - **Grass tiles**
 
-```startLine:endLine:res/Tuiles/Tile Grass/grass1.png
-// One of the grass tiles used to build the world
-```
+<p align="left">
+  <img src="res/Tuiles/Tile Grass/grass47.png" width="48">
+</p>
 
 - **Rock tiles**
 
-```startLine:endLine:res/Tuiles/Tile Rocks/tile1.png
-// One of the rock tiles used to build obstacles
-```
-
-> If you are viewing this on GitHub or in an IDE that supports image previews, the code references above will show the actual PNGs from the `res` folder.
+<p align="left">
+  <img src="res/Tuiles/Tile Rocks/tile2.png" width="48">
+</p>
 
 ### Features
 
